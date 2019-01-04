@@ -4,7 +4,7 @@ import XMonad.Config.Desktop
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
 
-main = do
+main = 
     xmonad =<< xmobar desktopConfig
     { terminal    = myTerminal
     , modMask     = myModMask
