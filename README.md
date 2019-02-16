@@ -1,1 +1,5 @@
-# My dotfiles
+# My dotfiles for
+
+* zsh
+* xmonad
+* vim
