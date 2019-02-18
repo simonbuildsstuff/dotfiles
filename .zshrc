@@ -1,13 +1,14 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+  export PATH=""$HOME"/bin:"$HOME"/bin/confluent/bin:"$HOME"/bin/sheesy:"$HOME"/bin/jb_rider/bin:"$PATH""
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/hal/.oh-my-zsh
+  export ZSH=""$HOME"/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="gentoo"
+ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,8 +52,9 @@ ZSH_THEME="gentoo"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sudo dircycle history)
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+plugins=(
+git zsh-autosuggestions zsh-syntax-highlighting sudo dircycle docker history   
+)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
