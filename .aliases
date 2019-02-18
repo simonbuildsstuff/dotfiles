@@ -1,0 +1,21 @@
+# Arch Linux
+alias syu="sudo pacman -Syu" 
+alias syuaur="yaourt -Syu --aur"
+# Docker
+alias dc='docker-compose'
+alias dcd='docker-compose down'
+alias dcu='docker-compose up'
+ 
+alias open='xdg-open'
+ 
+#Git Workflow
+#reverting:
+alias grvt='git revert'
+alias grvtnc='git revert --no-commit'
+alias cleanup-branches="git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d"
+alias glr="git pull --rebase"
+alias glra="git rebase --abort"
+
+#pbcopy
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
