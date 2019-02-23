@@ -23,7 +23,8 @@ myScreensaver = "/usr/bin/xscreensaver-command -l"
 
 -- The command to use as a launcher, to launch commands that don't have
 -- preset keybindings.
-myLauncher = "$(yeganesh -x -- -fn 'monospace-8' -nb '#000000' -nf '#FFFFFF' -sb '#7C7C7C' -sf '#CEFFAC')"
+--myLauncher = "$(yeganesh -x -- -fn 'monospace-8' -nb '#000000' -nf '#FFFFFF' -sb '#7C7C7C' -sf '#CEFFAC')"
+myLauncher = "/usr/bin/dmenu_run"
 
 -- Location of your xmobar.hs / xmobarrc
 myXmobarrc = "~/.xmonad/xmobar.hs"
@@ -122,6 +123,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   [((modMask, xK_l),
       spawn myScreensaver)
  
+  -- Spawn the launcher using command specified by myLauncher.
+  -- Use this to launch programs without a key binding.
+  -- Spawn the launcher using command specified by myLauncher.
+  -- Use this to launch programs without a key binding.
+  , ((modMask, xK_p),
+      spawn myLauncher)
+
   -- Shrink the master area.
   , ((modMask .|. controlMask, xK_h),
      sendMessage Shrink)
