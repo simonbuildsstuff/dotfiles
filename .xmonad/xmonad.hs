@@ -141,7 +141,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
   --
-
+  -- launch a terminal
+  , ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+  
   -- Close focused window.
   , ((modMask .|. shiftMask, xK_c),
      kill)
