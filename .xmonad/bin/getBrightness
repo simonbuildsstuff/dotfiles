@@ -1,0 +1,29 @@
+#!/bin/bash
+
+brightness=`xrandr --verbose | grep -m 1 -i brightness | cut -f2 -d ' '`
+
+bar='----------'
+
+if (( $(echo "$brightness >= 1.0" | bc) )); then
+    bar='//////////'
+elif (( $(echo "$brightness >= 0.9" | bc) )); then 
+    bar='/////////-'
+elif (( $(echo "$brightness >= 0.8" | bc) )); then 
+    bar='////////--'
+elif (( $(echo "$brightness >= 0.7" | bc) )); then 
+    bar='///////---'
+elif (( $(echo "$brightness >= 0.6" | bc) )); then 
+    bar='//////----'
+elif (( $(echo "$brightness >= 0.5" | bc) )); then 
+    bar='/////-----'
+elif (( $(echo "$brightness >= 0.4" | bc) )); then 
+    bar='////------'
+elif (( $(echo "$brightness >= 0.3" | bc) )); then 
+    bar='///-------'
+elif (( $(echo "$brightness >= 0.2" | bc) )); then 
+    bar='//--------'
+elif (( $(echo "$brightness >= 0.1" | bc) )); then 
+    bar='/---------'
+fi
+    
+echo "$bar ($brightness)"

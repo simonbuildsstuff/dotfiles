@@ -1,0 +1,25 @@
+#!/bin/bash
+current_brightness=`xrandr --verbose | grep -m 1 -i brightness | cut -f2 -d ' '`
+
+input=$1 # Expect input to be either +5, -5 (for inc/dec in percent) or an absolute number
+result=$1
+
+sign=${input:0:1}
+if [ "$sign" == "+" ]; then
+    percent=${input:1}
+    result=$(echo "$current_brightness * (100 + $percent) * 0.01" | bc)
+    if (( $(echo "$result > 1.0" | bc) )); then
+        result=1.0
+    fi
+elif [ "$sign" == "-" ]; then
+    percent=${input:1}
+    result=$(echo "$current_brightness * (100 - $percent) * 0.01" | bc)
+    if (( $(echo "$result < 0.1" | bc) )); then
+        result=0.1
+    fi
+fi
+
+monitors="$(xrandr | grep " connected" | cut -f1 -d " ")"
+for monitor in $monitors; do
+    xrandr --output $monitor --brightness $result
+done

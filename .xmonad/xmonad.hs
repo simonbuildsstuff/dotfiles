@@ -21,6 +21,13 @@ myTerminal = "gnome-terminal"
 -- The command to lock the screen or show the screensaver.
 myScreensaver = "/usr/bin/xscreensaver-command -l"
 
+-- The command to take a selective screenshot, where you select
+-- what you'd like to capture on the screen.
+mySelectScreenshot = "select-screenshot"
+
+-- The command to take a fullscreen screenshot.
+myScreenshot = "screenshot"
+
 -- The command to use as a launcher, to launch commands that don't have
 -- preset keybindings.
 --myLauncher = "$(yeganesh -x -- -fn 'monospace-8' -nb '#000000' -nf '#FFFFFF' -sb '#7C7C7C' -sf '#CEFFAC')"
@@ -97,11 +104,14 @@ myBorderWidth = 1
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [ className =? "firefox"        --> doShift "2:web"
+    [ className =? "firefox"        --> doShift "3:Web"
     , resource  =? "desktop_window" --> doIgnore
     , className =? "Galculator"     --> doFloat
     , className =? "Gimp"           --> doFloat
     , className =? "stalonetray"    --> doIgnore
+    , className =? "Keepassx"       --> doShift "7:Keys"
+    , className =? "Gnome-terminal" --> doShift "4:Term"
+    , className =? "nextcloud"      --> doIgnore
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
 
 ------------------------------------------------------------------------
@@ -138,6 +148,61 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. controlMask, xK_l),
       sendMessage Expand)
   
+  -- Take a selective screenshot using the command specified by mySelectScreenshot.
+  , ((modMask .|. shiftMask, xK_p),
+     spawn mySelectScreenshot)
+
+  -- Take a full screenshot using the command specified by myScreenshot.
+  , ((modMask .|. controlMask .|. shiftMask, xK_p),
+     spawn myScreenshot)
+
+  -- Mute volume.
+  , ((0, xF86XK_AudioMute),
+     spawn "amixer -D pulse set Master 1+ toggle")
+
+  -- Decrease volume.
+  , ((0, xF86XK_AudioLowerVolume),
+     spawn "amixer -q set Master 5%-")
+
+  -- Increase volume.
+  , ((0, xF86XK_AudioRaiseVolume),
+     spawn "amixer -q set Master 5%+")
+
+  -- Decrease brightness.
+  , ((0, xF86XK_MonBrightnessDown),
+     spawn "setBrightness -10")
+
+  -- Increase brightness.
+  , ((0, xF86XK_MonBrightnessUp),
+     spawn "setBrightness +10")
+
+  -- Mute volume.
+  , ((modMask .|. controlMask, xK_m),
+     spawn "amixer -D pulse set Master 1+ toggle")
+
+  -- Decrease volume.
+  , ((modMask .|. controlMask, xK_j),
+     spawn "amixer -q set Master 5%-")
+
+  -- Increase volume.
+  , ((modMask .|. controlMask, xK_k),
+     spawn "amixer -q set Master 5%+")
+
+  -- Audio previous.
+  , ((0, 0x1008FF16),
+     spawn "")
+
+  -- Play/pause.
+  , ((0, 0x1008FF14),
+     spawn "")
+
+  -- Audio next.
+  , ((0, 0x1008FF17),
+     spawn "")
+
+  -- Eject CD tray.
+  , ((0, 0x1008FF2C),
+     spawn "eject -T")
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
   --
@@ -234,6 +299,15 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
       | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
   , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
+
+------------------------------------------------------------------------
+-- Mouse bindings
+--
+-- Focus rules
+-- True if your focus should follow your mouse cursor.
+myFocusFollowsMouse :: Bool
+myFocusFollowsMouse = False
+
 ------------------------------------------------------------------------
 -- Startup hook
 -- Perform an arbitrary action each time xmonad starts or is restarted
@@ -271,7 +345,7 @@ main = do
 defaults = defaultConfig {
     -- simple stuff
     terminal           = myTerminal,
---    focusFollowsMouse  = myFocusFollowsMouse,
+    focusFollowsMouse  = myFocusFollowsMouse,
     borderWidth        = myBorderWidth,
     modMask            = myModMask,
     workspaces         = myWorkspaces,
@@ -280,7 +354,7 @@ defaults = defaultConfig {
 
     -- key bindings
     keys               = myKeys,
---    mouseBindings      = myMouseBindings,
+    --mouseBindings      = myMouseBindings,
 
     -- hooks, layouts
     layoutHook         = smartBorders $ myLayout,
