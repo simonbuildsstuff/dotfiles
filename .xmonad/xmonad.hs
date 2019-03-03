@@ -104,7 +104,7 @@ myBorderWidth = 1
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [ className =? "firefox"        --> doShift "3:Web"
+    [ className =? "Firefox"        --> doShift "3:Web"
     , resource  =? "desktop_window" --> doIgnore
     , className =? "Galculator"     --> doFloat
     , className =? "Gimp"           --> doFloat
