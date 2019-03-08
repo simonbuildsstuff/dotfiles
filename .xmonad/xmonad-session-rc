@@ -13,7 +13,10 @@ PATH=$PATH:~/.xmonad/bin
 #xmodmap -e "clear Lock"
 
 # Start a window compositor. This ensures Google Chrome paints correctly.
-xcompmgr -n &
+xcompmgr
+
+# Set background image with feh
+feh --bg-scale ~/Bilder/fight-club-soap.jpg  & 
 
 # Start the system tray
 #tray &
