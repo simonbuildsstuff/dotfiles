@@ -7,10 +7,10 @@ xmonad.hs:74:13: warning: [-Wdeprecations]
 74 | tabConfig = defaultTheme {
    |             ^^^^^^^^^^^^
 
-xmonad.hs:345:12: warning: [-Wdeprecations]
+xmonad.hs:344:12: warning: [-Wdeprecations]
     In the use of ‘defaultConfig’
     (imported from XMonad, but defined in XMonad.Config):
     Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
     |
-345 | defaults = defaultConfig {
+344 | defaults = defaultConfig {
     |            ^^^^^^^^^^^^^

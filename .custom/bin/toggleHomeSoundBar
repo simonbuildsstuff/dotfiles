@@ -1,0 +1,10 @@
+#!/bin/bash
+
+connectionInfo="$(bluetoothctl info FC:A8:9A:54:B0:AF  | grep "Connected" | cut -f2 -d " ")"
+
+if [ "$connectionInfo" = "no" ]; then
+   bluetoothctl connect  FC:A8:9A:54:B0:AF
+   exit;
+fi
+
+bluetoothctl disconnect  FC:A8:9A:54:B0:AF

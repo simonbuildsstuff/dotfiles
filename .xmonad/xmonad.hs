@@ -110,7 +110,6 @@ myManageHook = composeAll
     , className =? "Gimp"           --> doFloat
     , className =? "stalonetray"    --> doIgnore
     , className =? "Keepassx"       --> doShift "7:Keys"
-    , className =? "Gnome-terminal" --> doShift "4:Term"
     , className =? "nextcloud"      --> doIgnore
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
 
