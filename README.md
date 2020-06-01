@@ -12,8 +12,7 @@ Some of the highlights of my dotfiles setup:
 
 ## Setup
 ```bash
-git init --bare $HOME/.cfg
-git clone --bare https://github.com/smn-dv/dotfiles $HOME/.cfg
+git clone --bare git@github.com:smn-dv/dotfiles.git $HOME/.cfg
 config checkout # Configure the config alias before, see below
 ```
 
