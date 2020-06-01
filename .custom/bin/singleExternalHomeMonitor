@@ -1,6 +1,0 @@
-#!/bin/bash
-
-primary=eDP1
-externalMonitor="$(xrandr | grep " connected" | grep $primary -v | cut -f1 -d " ")"
-
-xrandr --output $primary --off  --output $externalMonitor --mode 1920x1080 
