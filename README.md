@@ -13,7 +13,7 @@ Some of the highlights of my dotfiles setup:
 ## Setup
 ```bash
 git init --bare $HOME/.cfg
-git clone --bare https://github.com/mpaepper/dotfiles $HOME/.cfg
+git clone --bare https://github.com/smn-dv/dotfiles $HOME/.cfg
 config checkout # Configure the config alias before, see below
 ```
 
@@ -32,4 +32,5 @@ config push
 ```
 ## Credits
 The git repo setup with the config alias is taken from https://news.ycombinator.com/item?id=11071754
+
 This README.md is shamelessly copied from https://github.com/mpaepper/dotfiles
