@@ -61,7 +61,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export VISUAL="vim"
-export PYTHONPATH="/usr/lib/python3.6/site-packages/"
+#export PYTHONPATH="/usr/lib/python3.6/site-packages/"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
