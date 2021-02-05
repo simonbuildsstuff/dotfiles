@@ -1,11 +1,13 @@
 # My dotfiles for
 
 * zsh
+* kitty
 
 Some of the highlights of my dotfiles setup:
   * The home folder is mapped to be under version control and a special alias (config) is used to add files
   * Therefore, you don't need to use symlinks or anything similar and you can just add new dot files as they appear
   * Zsh is used as shell
+  * Kitty is used as terminal emulator (almost the  default config)
 
 ## Setup
 ```bash
