@@ -1,5 +1,6 @@
 # Arch Linux
 alias syu="sudo pacman -Syu" 
+alias update="syu && yay -Syu --aur"
 # Docker
 alias dc='docker-compose'
 alias dcd='docker-compose down'
