@@ -69,7 +69,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export VISUAL="vim"
+export VISUAL="nvim"
 #export PYTHONPATH="/usr/lib/python3.6/site-packages/"
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -80,7 +80,7 @@ export VISUAL="vim"
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='vim'
+  export EDITOR='nvim'
 fi
 
 # Compilation flags
